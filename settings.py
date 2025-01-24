@@ -36,13 +36,15 @@ AUTH_USER_MODEL = 'products.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_db_name',
-        'USER': 'your_user',
-        'PASSWORD': 'your_password',
-        'HOST': 'your_host',
-        'PORT': '5432',
+        'NAME': 'christopherdatabase',  # Database name
+        'USER': 'christopherdatabase_user',  # User
+        'PASSWORD': 'WH0m8wcpLdMr3oGrLC8AqDFsteJY7TGQ',  # Password
+        'HOST': 'dpg-cua1ur23esus73ejlug0-a',  # Host
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
+
 
 # Middleware
 MIDDLEWARE = [
@@ -115,4 +117,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API Key
 SELAR_API_KEY = os.getenv('SELAR_API_KEY', 'sat_3iv9q393aw97c7m211140770p2l')  # Set default for development
-ALLOWED_HOSTS = ['your-backend-service.onrender.com']
+ALLOWED_HOSTS = ['https://christoper-fashion-backend.onrender.com']
