@@ -33,6 +33,22 @@ INSTALLED_APPS = [
 
 # Custom User Model
 AUTH_USER_MODEL = 'products.User'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'christopherdatabase',  # Database name
+        'USER': 'christopherdatabase_user',  # User
+        'PASSWORD': 'WH0m8wcpLdMr3oGrLC8AqDFsteJY7TGQ',  # Password
+        'HOST': 'dpg-cua1ur23esus73ejlug0-a',  # Host
+        'PORT': '5432',  # Default PostgreSQL port
+    }
+}
+ALLOWED_HOSTS = [
+    'christoper-fashion-backend.onrender.com',  # Your deployed domain
+    'localhost',  # For local testing
+]
+
+
 
 # Middleware
 MIDDLEWARE = [
@@ -47,10 +63,14 @@ MIDDLEWARE = [
 ]
 
 # CORS Policy
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
-CORS_ALLOWED_ORIGIN_REGEXES = os.getenv('CORS_ALLOWED_ORIGIN_REGEXES', '').split(',')
-CORS_ALLOW_ALL_ORIGINS=True
-# URLs
+CORS_ALLOWED_ORIGINS = [
+    'https://christopher-fashion-house.onrender.com',
+]
+
+# CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+# CORS_ALLOWED_ORIGIN_REGEXES = os.getenv('CORS_ALLOWED_ORIGIN_REGEXES', '').split(',')
+# CORS_ALLOW_ALL_ORIGINS=True
+# # URLs
 ROOT_URLCONF = 'shop_backend.urls'
 
 # Templates
@@ -75,7 +95,7 @@ WSGI_APPLICATION = 'shop_backend.wsgi.application'
 
 # Database Configuration
 DATABASES = {
-    'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+     'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
 }
 
 # Password Validators
@@ -105,3 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API Key
 SELAR_API_KEY = os.getenv('SELAR_API_KEY', 'sat_3iv9q393aw97c7m211140770p2l')  # Set default for development
+ALLOWED_HOSTS = ['https://christoper-fashion-backend.onrender.com']
