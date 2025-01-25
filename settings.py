@@ -117,4 +117,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API Key
 SELAR_API_KEY = os.getenv('SELAR_API_KEY', 'sat_3iv9q393aw97c7m211140770p2l')  # Set default for development
-ALLOWED_HOSTS = ['https://christoper-fashion-backend.onrender.com']
+#ALLOWED_HOSTS = ['https://christoper-fashion-backend.onrender.com']
+ALLOWED_HOSTS = [
+    'christoper-fashion-backend.onrender.com',  # Your deployed domain
+    'localhost',  # For local testing
+]
