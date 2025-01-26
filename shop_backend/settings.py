@@ -11,8 +11,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Static Files
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Security
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-fallback-secret-key')  # Use env variable for production
 DEBUG = os.getenv('DEBUG', 'True') == 'True'  # Toggle debug mode using environment variable
@@ -34,19 +35,12 @@ INSTALLED_APPS = [
 # Custom User Model
 AUTH_USER_MODEL = 'products.User'
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'christopherdatabase',  # Database name
-        'USER': 'christopherdatabase_user',  # User
-        'PASSWORD': 'WH0m8wcpLdMr3oGrLC8AqDFsteJY7TGQ',  # Password
-        'HOST': 'dpg-cua1ur23esus73ejlug0-a',  # Host
-        'PORT': '5432',  # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://christopherdatabase_user:WH0m8wcpLdMr3oGrLC8AqDFsteJY7TGQ@dpg-cua1ur23esus73ejlug0-a/christopherdatabase',
+        conn_max_age=600
+    )
 }
-ALLOWED_HOSTS = [
-    'christoper-fashion-backend.onrender.com',  # Your deployed domain
-    'localhost',  # For local testing
-]
 
 
 
@@ -63,14 +57,10 @@ MIDDLEWARE = [
 ]
 
 # CORS Policy
-CORS_ALLOWED_ORIGINS = [
-    'https://christopher-fashion-house.onrender.com',
-]
-
-# CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
-# CORS_ALLOWED_ORIGIN_REGEXES = os.getenv('CORS_ALLOWED_ORIGIN_REGEXES', '').split(',')
-# CORS_ALLOW_ALL_ORIGINS=True
-# # URLs
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+CORS_ALLOWED_ORIGIN_REGEXES = os.getenv('CORS_ALLOWED_ORIGIN_REGEXES', '').split(',')
+CORS_ALLOW_ALL_ORIGINS=True
+# URLs
 ROOT_URLCONF = 'shop_backend.urls'
 
 # Templates
