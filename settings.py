@@ -37,7 +37,7 @@ AUTH_USER_MODEL = 'products.User'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://christopherdatabase_user:WH0m8wcpLdMr3oGrLC8AqDFsteJY7TGQ@dpg-cua1ur23esus73ejlug0-a/christopherdatabase',
+        default='postgresql://datachristo_user:bWX59EXP2MhlOG0yMyQZ1vrqmJsIfeKt@dpg-d0dn922dbo4c738o67m0-a/datachristo',
         conn_max_age=600
     )
 }
